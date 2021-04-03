@@ -11,8 +11,15 @@ botCache.eventHandlers.ready = function () {
   editBotsStatus(
     StatusTypes.DoNotDisturb,
     "Discordeno Best Lib",
-    ActivityType.Game,
+    ActivityType.Game
   );
+
+  for (const guild of cache.guilds.values()) {
+    console.log(guild.members);
+    // guild.members.forEach((member: { username: string }) => {
+    //   console.log(`Member: ${member.username}`);
+    // });
+  }
 
   console.log(`Loaded ${botCache.arguments.size} Argument(s)`);
   console.log(`Loaded ${botCache.commands.size} Command(s)`);
@@ -24,6 +31,6 @@ botCache.eventHandlers.ready = function () {
   registerTasks();
 
   console.log(
-    `[READY] Bot is online and ready in ${cache.guilds.size} guild(s)!`,
+    `[READY] Bot is online and ready in ${cache.guilds.size} guild(s)!`
   );
 };

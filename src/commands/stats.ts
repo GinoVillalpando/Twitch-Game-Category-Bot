@@ -1,5 +1,5 @@
 import { Embed } from "./../utils/Embed.ts";
-import { botID, cache } from "../../deps.ts";
+import { cache } from "../../deps.ts";
 import { createCommand } from "../utils/helpers.ts";
 
 createCommand({
@@ -17,7 +17,7 @@ createCommand({
     const embed = new Embed()
       .setAuthor(
         `${message.guild?.botMember?.nick || message.guild?.bot?.tag} Stats`,
-        message.guild?.bot?.avatarURL,
+        message.guild?.bot?.avatarURL
       )
       .setColor("random")
       .addField("Guilds:", cache.guilds.size.toLocaleString(), true)
