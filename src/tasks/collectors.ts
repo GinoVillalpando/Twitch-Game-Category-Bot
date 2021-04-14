@@ -1,5 +1,5 @@
 // This task will help remove un-used collectors to help keep our cache optimized.
-import { botCache } from "../../deps.ts";
+import { botCache, cache } from "../../deps.ts";
 import { Milliseconds } from "../utils/constants/time.ts";
 
 botCache.tasks.set(`collectors`, {
@@ -12,7 +12,7 @@ botCache.tasks.set(`collectors`, {
 
     botCache.messageCollectors.forEach((collector, key) => {
       // This collector has not finished yet.
-      if ((collector.createdAt + collector.duration) > now) return;
+      if (collector.createdAt + collector.duration > now) return;
 
       // Remove the collector
       botCache.messageCollectors.delete(key);
@@ -22,7 +22,7 @@ botCache.tasks.set(`collectors`, {
 
     botCache.reactionCollectors.forEach((collector, key) => {
       // This collector has not finished yet.
-      if ((collector.createdAt + collector.duration) > now) return;
+      if (collector.createdAt + collector.duration > now) return;
 
       // Remove the collector
       botCache.reactionCollectors.delete(key);

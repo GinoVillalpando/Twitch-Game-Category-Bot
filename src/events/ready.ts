@@ -10,16 +10,9 @@ import { registerTasks } from "./../utils/taskHelper.ts";
 botCache.eventHandlers.ready = function () {
   editBotsStatus(
     StatusTypes.DoNotDisturb,
-    "Discordeno Best Lib",
+    "I like Toast :)",
     ActivityType.Game
   );
-
-  for (const guild of cache.guilds.values()) {
-    console.log(guild.members);
-    // guild.members.forEach((member: { username: string }) => {
-    //   console.log(`Member: ${member.username}`);
-    // });
-  }
 
   console.log(`Loaded ${botCache.arguments.size} Argument(s)`);
   console.log(`Loaded ${botCache.commands.size} Command(s)`);

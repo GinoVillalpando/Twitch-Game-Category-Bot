@@ -1,16 +1,15 @@
-import { createCommand, sendEmbed } from "../utils/helpers.ts";
+import { createCommand } from "../utils/helpers.ts";
 import { cache } from "../../deps.ts";
 
 createCommand({
   name: `activity`,
   execute: async (message) => {
     try {
-      const member = cache.members.get("104184695750680576");
-      console.log(member);
-
-      return message.send(`member: ${member.username}`);
+      const user = cache.members.get(message.author.id);
+      const presence = cache.presences.get("104184695750680576");
+      return message.send(`member is playing ${presence}`);
     } catch (error) {
-      return message.send("no member");
+      return message.send(`Error: ${error}`);
     }
   },
 });
