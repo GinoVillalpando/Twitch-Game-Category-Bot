@@ -5,7 +5,6 @@ botCache.monitors.set("messageCollector", {
   /** The main code that will be run when this monitor is triggered. */
   // deno-lint-ignore require-await
   execute: async function (message: Message) {
-    console.log("message that was sent: " + message);
     const collector = botCache.messageCollectors.get(message.author.id);
     // This user has no collectors pending or the message is in a different channel
     if (!collector || message.channelID !== collector.channelID) return;
