@@ -4,7 +4,7 @@ import { fileLoader, importDirectory } from "./src/utils/helpers.ts";
 import { loadLanguages } from "./src/utils/i18next.ts";
 
 console.info(
-  "Beginning Bot Startup Process. This can take a little bit depending on your system. Loading now..."
+  "Beginning Bot Startup Process. This can take a little bit depending on your system. Loading now...",
 );
 
 // Forces deno to read all the files which will fill the commands/inhibitors cache etc.
@@ -18,7 +18,7 @@ await Promise.all(
     "./src/tasks",
     "./src/permissionLevels",
     "./src/events",
-  ].map((path) => importDirectory(Deno.realPathSync(path)))
+  ].map((path) => importDirectory(Deno.realPathSync(path))),
 );
 await fileLoader();
 

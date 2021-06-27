@@ -1,5 +1,5 @@
 import { Milliseconds } from "../utils/constants/time.ts";
-import { TwitchChat, Channel } from "https://deno.land/x/tmi/mod.ts";
+import { Channel, TwitchChat } from "https://deno.land/x/tmi/mod.ts";
 import { botCache, botID, cache } from "../../deps.ts";
 import { configs } from "../../configs.ts";
 

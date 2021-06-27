@@ -1,6 +1,6 @@
 import { createCommand } from "../utils/helpers.ts";
 import { cache } from "../../deps.ts";
-import { TwitchChat, Channel } from "https://deno.land/x/tmi/mod.ts";
+import { Channel, TwitchChat } from "https://deno.land/x/tmi/mod.ts";
 import { delay } from "https://deno.land/std@0.64.0/async/delay.ts";
 import { configs } from "../../configs.ts";
 
@@ -22,7 +22,7 @@ createCommand({
 
       console.log(presence.activities[0]["name"]);
       return await message.send(
-        `member is playing ${presence.activities[0]["name"]}`
+        `member is playing ${presence.activities[0]["name"]}`,
       );
     } catch (error) {
       return message.send(`Error: ${error}`);
