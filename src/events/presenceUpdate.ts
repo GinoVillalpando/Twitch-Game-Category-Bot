@@ -63,5 +63,4 @@ botCache.eventHandlers.presenceUpdate = async (presence) => {
   } else {
     channel.send("Error: Did not detect game presence");
   }
-  console.log("presence : ", presence);
 };
