@@ -26,6 +26,10 @@ botCache.tasks.set(`activityCheck`, {
     if (presence) {
       if (presence.activities[0]["name"] === "Visual Studio Code") {
         updateTitle(channel, "Science & Technology");
+      } else if (presence.activities[0]["name"] === "Twitch") {
+        updateTitle(channel, "Just Chatting");
+      } else if (presence.activities[0]["name"] === "SteamVR") {
+        updateTitle(channel, "Just Chatting");
       } else {
         updateTitle(channel, presence.activities[0]["name"]);
         console.log(presence.activities[0]["name"]);
