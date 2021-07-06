@@ -15,7 +15,7 @@ createCommand({
       const channel = twitchChat.joinChannel("grievxus");
 
       const updateTitle = async (channel: Channel, game: string) => {
-        channel.send(`!game ${game}`);
+        await channel.send(`!game ${game}`);
       };
 
       updateTitle(channel, presence.activities[0]["name"]);
