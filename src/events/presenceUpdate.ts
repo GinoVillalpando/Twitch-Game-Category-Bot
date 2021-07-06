@@ -32,7 +32,7 @@ botCache.eventHandlers.presenceUpdate = async () => {
     // replace special characters in title
     const activityTitle = streamerPresence.activities[0]?.name.replace(
       /[^a-zA-Z0-9: ]/g,
-      ""
+      "",
     );
 
     streamerPresence.activities.forEach((activity) => {

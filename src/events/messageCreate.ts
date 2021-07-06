@@ -46,7 +46,7 @@ botCache.eventHandlers.messageCreate = async function (message) {
       const results = await Promise.all(
         monitor.userChannelPermissions.map((perm) =>
           hasChannelPermissions(message.author.id, message.guildID, [perm])
-        )
+        ),
       );
       if (results.includes(false)) return;
     }
@@ -57,7 +57,7 @@ botCache.eventHandlers.messageCreate = async function (message) {
       !(await memberIDHasPermission(
         message.author.id,
         message.guildID,
-        monitor.userServerPermissions
+        monitor.userServerPermissions,
       ))
     ) {
       return;
@@ -68,7 +68,7 @@ botCache.eventHandlers.messageCreate = async function (message) {
       monitor.botChannelPermissions &&
       !(await botHasChannelPermissions(
         message.guildID,
-        monitor.botChannelPermissions
+        monitor.botChannelPermissions,
       ))
     ) {
       return;

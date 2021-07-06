@@ -22,7 +22,7 @@ createCommand({
 
       console.log(presence.activities[0]["name"]);
       return await message.send(
-        `member is playing ${presence.activities[0]["name"]}`
+        `member is playing ${presence.activities[0]["name"]}`,
       );
     } catch (error) {
       return message.send(`Error: ${error}`);
