@@ -13,13 +13,14 @@ interface TwitchObject {
   assets?: object;
 }
 
-botCache.eventHandlers.presenceUpdate = async (presence) => {
+botCache.eventHandlers.presenceUpdate = async () => {
   if (!cache.isReady) return;
 
   // twitch params
-  const twitchChat = new TwitchChat(configs.oauthToken, "grievxus");
+  const streamerPresence = cache.presences.get(configs.userId);
+  const twitchChat = new TwitchChat(configs.oauthToken, configs.userName);
   await twitchChat.connect();
-  const channel = twitchChat.joinChannel("grievxus");
+  const channel = twitchChat.joinChannel(configs.userName);
   let twitchCategory: TwitchObject = {};
 
   // function that sends our twitch bot to set our game title
@@ -27,16 +28,16 @@ botCache.eventHandlers.presenceUpdate = async (presence) => {
     channel.send(`!game ${game}`);
   };
 
-  if (presence.activities) {
+  if (streamerPresence) {
     // replace special characters in title
-    const activityTitle = presence.activities[0]?.name.replace(
+    const activityTitle = streamerPresence.activities[0]?.name.replace(
       /[^a-zA-Z0-9: ]/g,
       ""
     );
 
-    presence.activities.forEach((activity) => {
+    streamerPresence.activities.forEach((activity) => {
       // TODO: possibly fix this id || Specific uuid for Twitch stream presence
-      if (activity.id === "1c67c74ac6585498") {
+      if (activity.name === "Twitch") {
         twitchCategory = activity;
       }
     });
@@ -61,6 +62,6 @@ botCache.eventHandlers.presenceUpdate = async (presence) => {
       updateTitle(channel, activityTitle);
     }
   } else {
-    channel.send("Error: Did not detect game presence");
+    channel.send("Follow The Stream peepoLove");
   }
 };
