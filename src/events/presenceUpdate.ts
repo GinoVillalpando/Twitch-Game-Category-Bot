@@ -10,7 +10,7 @@ interface TwitchObject {
   id?: string;
   details?: string;
   createdAt?: number;
-  assets?: object;
+  assets?: Record<string, unknown>;
 }
 
 botCache.eventHandlers.presenceUpdate = async () => {
@@ -25,7 +25,7 @@ botCache.eventHandlers.presenceUpdate = async () => {
 
   // function that sends our twitch bot to set our game title
   const updateTitle = async (channel: Channel, game: string) => {
-    channel.send(`!game ${game}`);
+    await channel.send(`!game ${game}`);
   };
 
   if (streamerPresence) {

@@ -15,14 +15,14 @@ createCommand({
       const channel = twitchChat.joinChannel("grievxus");
 
       const updateTitle = async (channel: Channel, game: string) => {
-        channel.send(`!game ${game}`);
+        await channel.send(`!game ${game}`);
       };
 
       updateTitle(channel, presence.activities[0]["name"]);
 
       console.log(presence.activities[0]["name"]);
       return await message.send(
-        `member is playing ${presence.activities[0]["name"]}`,
+        `member is playing ${presence.activities[0]["name"]}`
       );
     } catch (error) {
       return message.send(`Error: ${error}`);
