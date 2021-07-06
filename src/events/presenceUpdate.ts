@@ -19,9 +19,10 @@ botCache.eventHandlers.presenceUpdate = async () => {
   // twitch params
   const streamerPresence = cache.presences.get(configs.userId);
   const twitchChat = new TwitchChat(configs.oauthToken, configs.userName);
-  await twitchChat.connect();
   const channel = twitchChat.joinChannel(configs.userName);
   let twitchCategory: TwitchObject = {};
+
+  await twitchChat.connect();
 
   // function that sends our twitch bot to set our game title
   const updateTitle = async (channel: Channel, game: string) => {
@@ -32,11 +33,10 @@ botCache.eventHandlers.presenceUpdate = async () => {
     // replace special characters in title
     const activityTitle = streamerPresence.activities[0]?.name.replace(
       /[^a-zA-Z0-9: ]/g,
-      "",
+      ""
     );
 
-    streamerPresence.activities.forEach((activity) => {
-      // TODO: possibly fix this id || Specific uuid for Twitch stream presence
+    streamerPresence.activities.forEach((activity: TwitchObject) => {
       if (activity.name === "Twitch") {
         twitchCategory = activity;
       }

@@ -10,9 +10,9 @@ createCommand({
     try {
       const user = cache.members.get(message.author.id);
       const presence = cache.presences.get(user.id);
-      const twitchChat = new TwitchChat(configs.oauthToken, "grievxus");
+      const twitchChat = new TwitchChat(configs.oauthToken, configs.userName);
       await twitchChat.connect();
-      const channel = twitchChat.joinChannel("grievxus");
+      const channel = twitchChat.joinChannel(configs.userName);
 
       const updateTitle = async (channel: Channel, game: string) => {
         await channel.send(`!game ${game}`);
@@ -22,7 +22,7 @@ createCommand({
 
       console.log(presence.activities[0]["name"]);
       return await message.send(
-        `member is playing ${presence.activities[0]["name"]}`,
+        `member is playing ${presence.activities[0]["name"]}`
       );
     } catch (error) {
       return message.send(`Error: ${error}`);
