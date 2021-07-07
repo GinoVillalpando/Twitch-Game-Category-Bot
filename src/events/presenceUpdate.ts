@@ -50,18 +50,16 @@ botCache.eventHandlers.presenceUpdate = async () => {
       if (twitchCategory.state !== "Just Chatting") {
         updateTitle(channel, "Just Chatting");
       }
-    } else if (activityTitle === "SteamVR") {
-      if (twitchCategory.state !== "Just Chatting") {
-        updateTitle(channel, "Just Chatting");
-      }
     } else if (activityTitle === "Call of Duty: Modern Warfare") {
       if (twitchCategory.state !== "Call of Duty: Warzone") {
         updateTitle(channel, "Call of Duty: Warzone");
       }
     } else if (activityTitle !== twitchCategory.state) {
       updateTitle(channel, activityTitle);
+    } else if (activityTitle === "SteamVR") {
+      return;
+    } else if (activityTitle === "OVR Toolkit") {
+      return;
     }
-  } else {
-    channel.send("Follow The Stream peepoLove");
-  }
+  } else return;
 };
