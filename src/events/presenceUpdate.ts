@@ -19,7 +19,9 @@ botCache.eventHandlers.presenceUpdate = async () => {
   // twitch params
   const streamerPresence = cache.presences.get(configs.userId);
   const twitchChat = new TwitchChat(configs.oauthToken, configs.userName);
+
   await twitchChat.connect();
+  
   const channel = twitchChat.joinChannel(configs.userName);
   let twitchCategory: TwitchObject = {};
 
