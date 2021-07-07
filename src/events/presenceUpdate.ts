@@ -56,12 +56,12 @@ botCache.eventHandlers.presenceUpdate = async () => {
       if (twitchCategory.state !== "Call of Duty: Warzone") {
         updateTitle(channel, "Call of Duty: Warzone");
       }
-    } else if (activityTitle !== twitchCategory.state) {
-      updateTitle(channel, activityTitle);
     } else if (activityTitle === "SteamVR") {
       return;
     } else if (activityTitle === "OVR Toolkit") {
       return;
-    }
+    } else if (activityTitle !== twitchCategory.state) {
+      updateTitle(channel, activityTitle);
+    } 
   } else return;
 };
