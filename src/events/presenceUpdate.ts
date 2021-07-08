@@ -32,7 +32,7 @@ botCache.eventHandlers.presenceUpdate = async () => {
     // replace special characters in title
     const activityTitle = streamerPresence.activities[0]?.name.replace(
       /[^a-zA-Z0-9: ]/g,
-      "",
+      ""
     );
 
     streamerPresence.activities.forEach((activity) => {
@@ -41,6 +41,8 @@ botCache.eventHandlers.presenceUpdate = async () => {
         twitchCategory = activity;
       }
     });
+
+    if (activityTitle === "SteamVR" || "OVR Toolkit") return;
 
     if (activityTitle === "Visual Studio Code") {
       if (twitchCategory.state !== "Science & Technology") {
@@ -56,10 +58,6 @@ botCache.eventHandlers.presenceUpdate = async () => {
       }
     } else if (activityTitle !== twitchCategory.state) {
       updateTitle(channel, activityTitle);
-    } else if (activityTitle === "SteamVR") {
-      return;
-    } else if (activityTitle === "OVR Toolkit") {
-      return;
     }
   } else return;
 };
