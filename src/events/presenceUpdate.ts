@@ -42,8 +42,6 @@ botCache.eventHandlers.presenceUpdate = async () => {
       }
     });
 
-    if (activityTitle === "SteamVR" || "OVR Toolkit") return;
-
     if (activityTitle === "Visual Studio Code") {
       if (twitchCategory.state !== "Science & Technology") {
         updateTitle(channel, "Science & Technology");
@@ -56,8 +54,10 @@ botCache.eventHandlers.presenceUpdate = async () => {
       if (twitchCategory.state !== "Call of Duty: Warzone") {
         updateTitle(channel, "Call of Duty: Warzone");
       }
+    } else if (activityTitle === "SteamVR" || activityTitle === "OVR Toolkit") {
+      return;
     } else if (activityTitle !== twitchCategory.state) {
       updateTitle(channel, activityTitle);
-    }
+    } 
   } else return;
 };
