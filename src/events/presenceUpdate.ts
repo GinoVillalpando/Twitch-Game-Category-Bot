@@ -36,7 +36,6 @@ botCache.eventHandlers.presenceUpdate = async () => {
     );
 
     streamerPresence.activities.forEach((activity) => {
-      // TODO: possibly fix this id || Specific uuid for Twitch stream presence
       if (activity.name === "Twitch") {
         twitchCategory = activity;
       }
@@ -47,7 +46,7 @@ botCache.eventHandlers.presenceUpdate = async () => {
         updateTitle(channel, "Science & Technology");
       }
     } else if (activityTitle === "Twitch") {
-      if (twitchCategory.state !== "Just Chatting") {
+      if (twitchCategory.state !== "Just Chatting" && streamerPresence.activities.length <= 1) {
         updateTitle(channel, "Just Chatting");
       }
     } else if (activityTitle === "Call of Duty: Modern Warfare") {
