@@ -46,7 +46,10 @@ botCache.eventHandlers.presenceUpdate = async () => {
         updateTitle(channel, "Science & Technology");
       }
     } else if (activityTitle === "Twitch") {
-      if (twitchCategory.state !== "Just Chatting" && streamerPresence.activities.length <= 1) {
+      if (
+        twitchCategory.state !== "Just Chatting" &&
+        streamerPresence.activities.length <= 1
+      ) {
         updateTitle(channel, "Just Chatting");
       }
     } else if (activityTitle === "Call of Duty: Modern Warfare") {
@@ -55,8 +58,10 @@ botCache.eventHandlers.presenceUpdate = async () => {
       }
     } else if (activityTitle === "SteamVR" || activityTitle === "OVR Toolkit") {
       return;
+    } else if (activityTitle === "Desktop") {
+      return;
     } else if (activityTitle !== twitchCategory.state) {
       updateTitle(channel, activityTitle);
-    } 
+    }
   } else return;
 };
